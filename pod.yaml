@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mytest
+ namespace: dev
+spec:
+  containers:
+  - name: testcontainer
+    image: nginx
+  nodeSelector:
+    evn: dev

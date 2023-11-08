@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mytest-apply
+ namespace: dev
+ labels:
+   tier: web
+spec:
+  containers:
+  - name: testcontainer
+    image: nginx

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devops-cm
+data:
+  BACKEND_URL : http://api.google.com
+  TIMEOUT : 10s
+  config.properties: |
+    URL=http://api.google.com
+    SOCKETTIMEOUT=10s
+    HTTPTIMEOUT=8s

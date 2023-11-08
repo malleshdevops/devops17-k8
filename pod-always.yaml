@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mytest-always
+ namespace: dev
+spec:
+  containers:
+  - name: testcontainer
+    image: tomcat
+    imagePullPolicy: Always
+  nodeSelector:
+    app: java

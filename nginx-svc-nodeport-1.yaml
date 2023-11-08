@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-nodeport-1
+  namespace: dev
+spec:
+  type: NodePort
+  selector:
+    tier: web
+  ports:
+    - protocol: TCP
+      port: 85  ## this is service port
+      targetPort: 80 ## container port
+      nodePort: 30006

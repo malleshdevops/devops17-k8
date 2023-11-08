@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mytest-nodename
+ namespace: dev
+spec:
+  containers:
+  - name: testcontainer
+    image: nginx
+  nodeName: k8-worker-2

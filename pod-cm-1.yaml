@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mytest-cm
+spec:
+  containers:
+  - name: testcontainer
+    image: nginx
+    env:
+      - name: BACKEND_URL
+        valueFrom:
+          configMapKeyRef:
+            name: devops-cm
+            key: BACKEND_URL
+      - name: TIMEOUT
+        valueFrom:
+          configMapKeyRef:
+            name: devops-cm
+            key: TIMEOUT
