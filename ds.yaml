@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds-test
+  namespace: test
+spec: ## this is related to replication controller.
+  selector:
+    matchLabels:
+      app: web
+    matchExpressions:
+    - {key: tier, operator: In, values: [web]}
+  template: ## Here the pod definiton kept 
+    metadata:
+      name: mytest
+      namespace: dev
+      labels:
+        app: web
+        tier: web
+        env: dev
+    spec:  ## This is related pod specifications
+      containers:
+      - name: testcontainer
+        image: nginx

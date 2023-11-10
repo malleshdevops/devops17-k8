@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-tomcat
+  namespace: dev
+spec: ## this is related to replication controller.
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+    matchExpressions:
+      - {key: tier, operator: In, values: [web]}
+  template: ## Here the pod definiton kept 
+    metadata:
+      name: mytest
+      namespace: dev
+      labels:
+        app: web
+        tier: web
+        env: dev
+    spec:  ## This is related pod specifications
+      containers:
+      - name: tomcat
+        image: tomcat:9.0
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 500Mi
+          limits:
+            cpu: 300m
+            memory: 1Gi
